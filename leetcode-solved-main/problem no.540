@@ -1,0 +1,18 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+    class Solution {
+public:
+    int singleNonDuplicate(vector<int>& nums) {
+         int result=0;
+        for(int i=0;i<nums.size();i++){
+            result =result^nums[i];
+        }
+        return result;
+    }
+};
+    //same approach agr koi two elemt similer h to unka xor 0 hota h aur similar mhi h to bda wala elemt hota h 

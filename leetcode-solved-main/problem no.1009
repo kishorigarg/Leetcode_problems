@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int bitwiseComplement(int n) {
+        int mask=0;
+        int m=n;
+        if(n==0){
+            return 1;
+        }
+        
+        while(m!=0){
+            mask=(mask<<1)|1;
+            m=m>>1;
+
+        }
+        int ans =(~n)&mask;
+        return ans;
+    }
+};// ok isme jo approach use hua h uske according ek mask bnya h jo ki right shift krega  jisse sare
+//111 of number ko  zero m convert kiya ja ske

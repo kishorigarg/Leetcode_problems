@@ -1,0 +1,15 @@
+class Solution {
+public:
+    bool isPowerOfTwo(int n) {
+        
+        for(int i=0;i<=30;i++){
+            int ans =pow(2,i);
+            if(ans==n){
+                 return true;
+            }
+              
+        }
+       return false;
+    }
+};//approach simple h agr vo number pow 2 h to true then false ,30 
+//isliye liya h kyuki int ki range of 31 tk hoti h iske aage vo range se nikl kr error de dega
