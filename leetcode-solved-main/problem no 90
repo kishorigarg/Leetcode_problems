@@ -1,0 +1,27 @@
+class Solution {
+      private:
+    void solve(vector<int>nums,vector<int> output, int index,vector<vector<int>>& ans){
+            ans.push_back(output);
+         for (int i = index; i < nums.size(); i++) {
+            if (i > index && nums[i] == nums[i - 1]) {
+                continue;// for duplicates we found check already present or not
+            }
+    
+        int element=nums[i];
+        output.push_back(element);
+        solve(nums,output,i+1,ans);
+        output.pop_back();
+    }
+    }
+public:
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+         vector<vector<int>> ans; 
+         vector<int>output;
+         int index=0;
+         sort(nums.begin(), nums.end());
+         solve(nums, output,index,ans);
+         return ans;
+    }
+    
+};
+

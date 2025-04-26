@@ -1,0 +1,53 @@
+class Solution {
+private:
+    vector<int> computeLPS(const string& pattern) {
+        vector<int> lps(pattern.size(), 0);
+        int length = 0;
+        int i = 1;
+
+        while (i < pattern.size()) {
+            if (pattern[i] == pattern[length]) {
+                length++;
+                lps[i] = length;
+                i++;
+            } else {
+                if (length != 0) {
+                    length = lps[length - 1];
+                } else {
+                    lps[i] = 0;
+                    i++;
+                }
+            }
+        }
+
+        return lps;
+    }
+
+public:
+    int strStr(string haystack, string needle) {
+        if (needle.empty()) return 0;
+
+        vector<int> lps = computeLPS(needle);
+        int first = 0;
+        int second = 0;
+
+        while (first < haystack.size()) {
+            if (needle[second] == haystack[first]) {
+                second++;
+                first++;
+
+                if (second == needle.size()) {
+                    return first - second;
+                }
+            } else {
+                if (second == 0) {
+                    first++;
+                } else {
+                    second = lps[second - 1];
+                }
+            }
+        }
+
+        return -1;
+    }
+};
