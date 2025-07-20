@@ -1,0 +1,23 @@
+class Solution {
+public:
+    bool checkDivisibility(int n) {
+    
+        int product =1;
+        int sum =0;
+         int real=n;
+         int total =0;
+        while(n>0){
+            int ans =n%10;
+            sum +=ans;
+            product *=ans;
+            n= n/10;
+           total =sum+product;
+         
+        }
+       
+      if(real%total==0){
+           return true;
+      }
+        return false;
+    }
+};©leetcode
