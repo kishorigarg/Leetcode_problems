@@ -1,0 +1,52 @@
+class Solution {
+    void merge(vector<int>& nums, int s, int e ){
+      int mid=(s+e)/2;
+      int len1 =mid-s+1;;
+      int len2 =e-mid;
+      int *first =new int[len1];
+      int *second =new int[len2];
+      int mainarray=s;
+      for(int i =0;i<len1;i++){
+        first[i]=nums[mainarray++];
+
+      }
+      mainarray=mid+1;
+      for(int i=0;i<len2;i++){
+        second[i]=nums[mainarray++];
+
+      }
+      int ind1=0;
+      int ind2=0;
+      mainarray=s;
+      while(ind1<len1 && ind2 <len2){
+        if(first[ind1]<second[ind2]){
+      nums[mainarray++]=first[ind1++];
+        }
+        else{
+             nums[mainarray++]=second[ind2++];
+        }
+      }
+      while(ind1<len1){
+         nums[mainarray++]=first[ind1++];
+      }
+      while(ind2<len2){
+         nums[mainarray++]=second[ind2++];
+      }
+      
+    delete[] first;
+    delete[] second;
+    }
+    void mergeSort(vector<int>& nums, int s, int e) {
+        if (s >= e) return;
+
+        int mid = (s + e) / 2;
+        mergeSort(nums, s, mid);
+        mergeSort(nums, mid + 1, e);
+        merge(nums, s, e);
+    }
+public:
+    vector<int> sortArray(vector<int>& nums) {
+        mergeSort(nums, 0, nums.size() - 1);
+        return nums;
+    }
+};
